@@ -8,8 +8,8 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
   { text: '首页', link: '/' },
+  {text: '软件工程视角下的GenAI', link: '/notes/genai/'},
   { text: '博客', link: '/blog/' },
   { text: '标签', link: '/blog/tags/' },
   { text: '归档', link: '/blog/archives/' },
-  {text: '软件工程视角下的GenAI', link: '/notes/genai/README.md'},
 ])
