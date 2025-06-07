@@ -44,8 +44,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
         with:
-          # 部署到 master 分支
-          target_branch: master
+          # 部署到 doc 分支
+          target_branch: doc
           # 部署目录为 VuePress 的默认输出目录
           build_dir: docs/.vuepress/dist
         env:
