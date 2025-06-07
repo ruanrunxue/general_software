@@ -11,8 +11,5 @@ export default defineNavbarConfig([
   { text: '博客', link: '/blog/' },
   { text: '标签', link: '/blog/tags/' },
   { text: '归档', link: '/blog/archives/' },
-  {
-    text: '笔记',
-    items: [{ text: '示例', link: '/notes/demo/README.md' }]
-  },
+  {text: '软件工程视角下的GenAI', link: '/notes/genai/README.md'},
 ])
