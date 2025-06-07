@@ -14,7 +14,7 @@ import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
-  base: '/',
+  base: '/general_software/',
   lang: 'zh-CN',
   title: '软件通识',
   description: '软件通识',
