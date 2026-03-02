@@ -38,15 +38,39 @@ GenAI 也促使了存储的变革。SSD 替代传统 HDD 正成为主流，提�
 
 PaaS（Platform as a Service）是云计算的平台层，提供灵活可伸缩的云平台来开发、部署、运行和管理应用。GenAI 的出现，一方面促使 PaaS 层往更加适配 AI 负载的方向演进，另一方面 PaaS 因与 AI 深度结合而变得更加智能和好用。
 
-AI 辅助编程
+AI 时代最受益的人群可能是是开发者，AI 辅助编程（又称 Vibe Coding）的出现，使得开发变得更加容易，各类低码开发平台也纷纷向 AI 开发平台演进。不同于以往低码开发平台的拖拉拽开发界面，AI 开发平台的开发界面通常只有一个文本输入框。用户只需用自然语言跟 AI 对话，描述清楚需求，即可实现应用从开发到最终上线的全流程自动化托管，几乎不需要具备编程背景^[21][22]^。这将会促使开发者和应用数量的快速增长，对 PaaS 层带来新的挑战和机遇。
 
-Serverless
+在应用部署和运行上，AI 辅助编程让应用数量的剧增，从而进一步带动 Serverless 的普及。AI 应用的一大特征是自然语言替代传统图形化界面作为用户交互方式，而自然语言的无边界、不确定特征，导致 AI 应用的流程和负载难以被预测。在这种业务特征下，固定的资源配置变得性价比极低，很有可能出现忙时资源不足、闲时资源浪费的问题，导致应用上线成本高昂。Serverless 的核心特点是无需开发者管理基础设施，提供按需计费、自动扩缩容等能力，这无疑能大幅降低了开发者上线新应用的成本。另外，随着 AI 模型训推业务迅速增长，GPU/NPU 计算服务的 Serverless 化成为一种趋势^[22]^，Serverless 平台也朝着 Scale to Zero 的极致低成本方向演进。
 
-K8S 调度
+在原生时代，Kubernetes + 容器的应用管理平台底座已经成为业界标配，但过去更多的是以 CPU 为中心的调度机制。随着 AI 时代的来临，GPU 和 NPU 等异构算力占比越来越大、RDMA 等新型通信技术有替代 TCP 的趋势，支持多种通信网络拓扑感知、异构算力协同的调度机制变得必不可少。目前看，Kubernetes 在 AI 时代的地位仍无法被撼动，其与各类推理框架相结合逐渐成为主流，比如 vLLM Production Stack^[24]^ 就提供了与 Kubernetes 亲和的分布式部署方案。
 
-数据库
+数据一直以来都是企业最核心的资产之一，AI 时代更是如此，它决定了模型的质量。然而，企业中 80% 以上的数据是没有被充分利用的“暗数据”^[25]^，它们通常是非结构化和多模态的。随着多模态模型的普及，如何有效管理和利用这些“暗数据”变得愈发重要。传统的数据湖大多针对结构化和半结构化的数据而设计，比如 Apache Iceberg^[26]^、Apache Hudi^[27]^ 等，多模态的趋势促使了 Lance^[28]^、DeepLake^[29]^ 等多模态数据湖的崛起，对数据处理引擎也提出的新的要求。首先，数据处理引擎需要具备对海量多模态数据进行高效处理的基础能力。其次，AI 应用的典型特征是 CPU 和 AI 加速芯片协同计算、实时感知和响应，这要求数据处理引擎具备异构调度、动态负载调度的能力，Spark 等传统大数据引擎已难以满足，引出了 Ray 等专门为 AI 负载设计数据处理引擎^[30]^。
 
-大数据
+数据库也迎来的新的一波革新。大模型多轮对话的长记忆存储、检索增强生成等，都要求数据库具备向量存储和检索的能力。AI 应用实时感知和响应的动态负载特征，进一步加速了数据库往云原生 Serverless 方向的演进，快速冷启动和自动扩缩容的能力成为降低成本的关键。对普通用户来说，最直观的感受可能是数据交互变得更加容易，通过简单的自然语言即可完成数据查询和报表生成，数据洞察效率倍增。
+
+# MaaS 层
+
+MaaS（Model as a Service）指的是由云服务厂商提供预训练好的 AI 模型给用户直接使用，让企业或个人用户无需从零开始训练和部署模型，极大降低了模型使用门槛。
+
+模型是整个 GenAI 技术栈的大脑中枢。我们说所的大模型，通常指是大语言模型（Large Language Models，LLM），它经过大量数据和算力的训练，相比传统的 ML 模型具有更好的泛化性。目前几乎所有的大模型都是以 Transformer 架构为基础，它使用一种被称为多头注意力（Multi-Head Attention，MHA）的机制来考虑整个输入上下文，能够有效捕捉词句间的长距离依赖关系，从而具备了极佳的语言理解能力。多模态大语言模型（Multimodal Large Language Model，MLLM）是 LLM 的下一代演进，它在 LLM 的基础上扩充了对图片、视频、音频等多模态数据的理解，突破了单一文本的限制，能够执行“文生视频”、“图讲故事”等多模态任务。
+
+MaaS 对外是简单易用的 API 接口，背后则是一整套复杂的模型生命周期管理流程。
+
+高质量的模型离不开高质量的数据，这些训练数据获取、清洗、标注、转换、管理的全过程被称为数据工程（Data Engineering）。
+
+段落1：数据工程
+
+段落2：模型训练
+
+段落3：模型推理
+
+段落4：提示工程、上下文学习
+
+段落5：模型微调
+
+段落6：RAG
+
+
 
 > #### 参考
 >
@@ -89,3 +113,26 @@ K8S 调度
 > [19] [3FS Github](https://github.com/deepseek-ai/3FS), DeepSeek
 >
 > [20] [GPUDirect Storage](https://docs.nvidia.com/gpudirect-storage/index.html), NVIDIA
+>
+> [21] [Replit](https://replit.com), Replit
+>
+> [22] [Bolt.new](https://bolt.new), Bolt
+>
+> [23] [Cloud Run GPUs, now GA, makes running AI workloads easier for everyone](https://cloud.google.com/blog/products/serverless/cloud-run-gpus-are-now-generally-available), Google Cloud
+>
+> [24] [vLLM Production Stack](https://github.com/vllm-project/production-stack), vLLM
+>
+> [25] [What is Dark Data and Why Does It Matter to Public Agencies?](https://urbanlogiq.com/what-is-dark-data-and-why-does-it-matter-to-public-agencies/), URBAN LOGIQ
+>
+> [26] [Apache Iceberg](https://iceberg.apache.org/), Iceberg
+>
+> [27] [Apaxhe Hudi](https://hudi.apache.org/), Hudi
+>
+> [28] [LanceDB](https://www.lancedb.com/), LanceDB
+>
+> [29] [DeepLake](https://www.deeplake.ai/), activeloop 
+>
+> [30] [Comparing Ray and Apache Spark](https://www.anyscale.com/compare/ray-vs-spark), anyscale
+>
+> [31] [What is model as a service (MaaS)?](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-models-as-a-service-maas), Azure
+
